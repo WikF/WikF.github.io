@@ -1,4 +1,5 @@
 {
-  "name": "DataCEE - Software House",
-  "description": "A modern static website for a Data and AI-oriented software house in Central Eastern Europe."
+  "name": "Copy of DataCEE - Software House",
+  "description": "A modern static website for a Data and AI-oriented software house in Central Eastern Europe.",
+  "requestFramePermissions": []
 }
