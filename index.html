@@ -82,9 +82,21 @@
         </div>
 
         <div class="z-10 text-center px-4 max-w-6xl mx-auto">
-            <h1 class="text-6xl md:text-9xl font-black tracking-tight mb-8 text-cee-dark leading-tight">
+            <h1 class="text-6xl md:text-9xl font-black tracking-tight mb-6 text-cee-dark leading-tight">
                 <span class="inline-block">Data</span><span class="relative inline-flex flex-col overflow-hidden align-bottom h-[1em] justify-end"><span id="dynamic-text" class="text-cee-accent inline-block text-left pl-0.5 leading-none carousel-anim">CEE</span></span><span class="animate-cursor inline-block w-3 h-10 md:h-20 bg-cee-accent ml-2 align-baseline mb-[-0.5rem] md:mb-[-1rem]"></span>
             </h1>
+
+            <!-- Status Tag -->
+            <div class="mb-8 flex justify-center">
+                <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-emerald-200 bg-emerald-50 text-emerald-700 text-sm font-bold shadow-sm">
+                    <span class="relative flex h-2.5 w-2.5">
+                      <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                      <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
+                    </span>
+                    Accepting new projects
+                </div>
+            </div>
+
             <p class="mt-4 text-xl md:text-2xl text-gray-600 font-medium max-w-3xl mx-auto leading-relaxed">
                 The premier Data-Oriented Software House. <br>
                 <span class="text-cee-navy font-semibold">We are Data Engineering experts first, AI Innovators second.</span>
@@ -134,10 +146,10 @@
                     <p class="text-sm text-gray-500 leading-relaxed">Scalable architectures, ETL/ELT pipelines, and Modern Data Stack.</p>
                 </div>
                 
-                <!-- SWAPPED: LLM Integration is now 02 -->
+                <!-- SWAPPED: AI Engineering is now 02 (lowercase engineering) -->
                 <div class="bg-white p-8 rounded-2xl border border-gray-100 shadow-xl shadow-gray-200/40 hover:border-cee-accent transition-all duration-300 group translate-y-8">
                     <div class="text-cee-accent text-5xl mb-6 font-mono font-light group-hover:scale-110 transition-transform origin-left">02</div>
-                    <h4 class="font-bold text-xl mb-3 text-cee-dark">AI Engineering</h4>
+                    <h4 class="font-bold text-xl mb-3 text-cee-dark">AI engineering</h4>
                     <p class="text-sm text-gray-500 leading-relaxed">RAG pipelines, agents, and custom fine-tuning for enterprise needs.</p>
                 </div>
 
@@ -246,13 +258,18 @@
                 <p class="text-gray-500 text-lg">Tell us about your data challenges.</p>
             </div>
             
-            <div class="flex justify-center">
-                <a href="https://forms.office.com/pages/responsepage.aspx?id=DQSIkWdsW0yxEjajBLZtrQAAAAAAAAAAAANAAdHcWntUNFJYSklXSjRHVTM1ODZITzdaMDlCVU4wWS4u&route=shorturl" 
+            <div class="flex justify-center w-full">
+                <!-- Refactored for Firefox Compatibility: explicit dimensions, no overflow-hidden on flex container -->
+                <a href="https://forms.office.com/pages/responsepage.aspx?id=DQSIkWdsW0yxEjajBLZtrQAAAAAAAAAAAANAAdHcWntUNFJYSklXSjRHVTM1ODZITzdaMDlCVU4wWS4u&amp;route=shorturl" 
                    target="_blank" 
                    rel="noopener noreferrer"
-                   class="group relative inline-flex items-center justify-center px-12 py-6 text-xl md:text-2xl font-bold text-white bg-cee-navy rounded-2xl overflow-hidden transition-all duration-300 hover:bg-cee-accent hover:scale-105 hover:shadow-2xl shadow-xl">
+                   class="group relative inline-block w-auto transition-transform duration-300 hover:scale-105">
                     
-                    <span class="relative z-10 flex items-center gap-3">
+                    <!-- Background Layer -->
+                    <span class="absolute inset-0 w-full h-full bg-cee-navy rounded-2xl transition-all duration-300 group-hover:bg-cee-accent shadow-xl group-hover:shadow-2xl"></span>
+                    
+                    <!-- Content Layer -->
+                    <span class="relative z-10 flex items-center justify-center px-12 py-6 text-xl md:text-2xl font-bold text-white gap-3">
                         Open Project Inquiry Form
                         <svg class="w-6 h-6 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
                     </span>
