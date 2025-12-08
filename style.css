@@ -1,0 +1,36 @@
+/* Minimal custom CSS to support specific text effects */
+
+/* Ensure the cursor blinking effect is sharp */
+.cursor-blink {
+    animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+/* Carousel Animation Classes */
+.carousel-anim {
+    /* Uses standard easing for smooth movement */
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease;
+    display: inline-block;
+    will-change: transform, opacity;
+}
+
+/* State: Slide UP and Fade OUT */
+.carousel-out {
+    transform: translateY(-100%);
+    opacity: 0;
+}
+
+/* State: Positioned below for entry (hidden) */
+.carousel-in-start {
+    transform: translateY(100%);
+    opacity: 0;
+}
+
+/* Utility to disable transition for instant snapping */
+.no-transition {
+    transition: none !important;
+}
