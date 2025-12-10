@@ -1,4 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
+    /* -----------------------------
+       Carousel Logic
+    ----------------------------- */
     const textElement = document.getElementById('dynamic-text');
     
     // The sequence logic:
@@ -61,5 +64,32 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // 5. Schedule next run
         setTimeout(runCarousel, 2500);
+    }
+
+    /* -----------------------------
+       Cookie Consent Logic
+    ----------------------------- */
+    const banner = document.getElementById('consent-banner');
+    const acceptBtn = document.getElementById('accept-consent');
+    const storageKey = 'data_cee_consent';
+
+    // Check if user has already accepted
+    if (!localStorage.getItem(storageKey)) {
+        // Slight delay to allow page load before sliding in
+        setTimeout(() => {
+            banner.classList.remove('translate-y-full');
+        }, 1000);
+    }
+
+    if (acceptBtn) {
+        acceptBtn.addEventListener('click', () => {
+            // Store consent
+            localStorage.setItem(storageKey, 'true');
+            // Slide out
+            banner.classList.add('translate-y-full');
+            
+            // Optional: If you had scripts that shouldn't load until consent, 
+            // you would initialize them here.
+        });
     }
 });
