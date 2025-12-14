@@ -1,3 +1,4 @@
+
 document.addEventListener('DOMContentLoaded', () => {
     /* -----------------------------
        Carousel Logic
@@ -71,11 +72,36 @@ document.addEventListener('DOMContentLoaded', () => {
     ----------------------------- */
     const banner = document.getElementById('consent-banner');
     const acceptBtn = document.getElementById('accept-consent');
-    const storageKey = 'data_cee_consent';
+    const declineBtn = document.getElementById('decline-consent');
+    
+    // Versioned key to ensure users see the updated banner
+    const storageKey = 'data_cee_consent_v4';
 
-    // Check if user has already accepted
-    if (!localStorage.getItem(storageKey)) {
-        // Slight delay to allow page load before sliding in
+    // Helper to enable GA consent
+    function grantAnalyticsConsent() {
+        // window.gtag is defined in index.html
+        if (typeof window.gtag === 'function') {
+            window.gtag('consent', 'update', {
+                'ad_storage': 'granted',
+                'ad_user_data': 'granted',
+                'ad_personalization': 'granted',
+                'analytics_storage': 'granted'
+            });
+        }
+    }
+
+    // Check user preference on load
+    const userPreference = localStorage.getItem(storageKey);
+
+    if (userPreference === 'granted') {
+        // User previously accepted - enable analytics
+        grantAnalyticsConsent();
+        // Banner stays hidden (default CSS)
+    } else if (userPreference === 'denied') {
+        // User previously declined - leave defaults (denied)
+        // Banner stays hidden
+    } else {
+        // No choice yet - show banner
         setTimeout(() => {
             banner.classList.remove('translate-y-full');
         }, 1000);
@@ -83,13 +109,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (acceptBtn) {
         acceptBtn.addEventListener('click', () => {
-            // Store consent
-            localStorage.setItem(storageKey, 'true');
-            // Slide out
+            // Update consent to Google
+            grantAnalyticsConsent();
+            // Store preference
+            localStorage.setItem(storageKey, 'granted');
+            // Hide banner
             banner.classList.add('translate-y-full');
-            
-            // Optional: If you had scripts that shouldn't load until consent, 
-            // you would initialize them here.
+        });
+    }
+
+    if (declineBtn) {
+        declineBtn.addEventListener('click', () => {
+            // Do not update consent (stays denied)
+            // Store preference
+            localStorage.setItem(storageKey, 'denied');
+            // Hide banner
+            banner.classList.add('translate-y-full');
         });
     }
 });
